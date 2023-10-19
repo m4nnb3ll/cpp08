@@ -1,5 +1,22 @@
 #include "Span.hpp"
 
+Span::Span() : m_N(0) { }
+Span::~Span() { };
+
+Span::Span(const Span& o)
+	: m_N(o.m_N), m_numbers(o.m_numbers) { }
+
+Span&	Span::operator=(const Span& o)
+{
+	if (this != &o)
+	{
+		this->m_numbers.clear();
+		this->m_N = o.m_N;
+		this->m_numbers = o.m_numbers;
+	}
+	return (*this);
+}
+
 Span::Span(unsigned int N) : m_N(N) {}
 
 void	Span::addNumber(int num)
@@ -22,7 +39,6 @@ unsigned int	Span::shortestSpan()
 	{
 		tmp_span = std::abs(m_numbers[i] - m_numbers[i - 1]);
 		shortest = tmp_span < shortest ? tmp_span : shortest;
-		// printf("trapped inside the loop\n");
 	}
 	return (shortest);
 }
@@ -40,4 +56,9 @@ void	Span::fill(int (*f)())
 	std::vector<int> tmp_v(m_N);
 	std::generate(tmp_v.begin(), tmp_v.end(), f);
 	m_numbers = tmp_v;
+}
+
+unsigned int	Span::size()
+{
+	return (m_N);
 }

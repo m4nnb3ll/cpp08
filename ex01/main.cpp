@@ -1,5 +1,4 @@
 #include "Span.hpp"
-#include <stdio.h>
 
 int	fun()
 {
@@ -14,7 +13,7 @@ int main()
 	{
 		std::cout << test.shortestSpan() << std::endl;
 		std::cout << test.longestSpan() << std::endl;
-		std::cout << test.m_numbers.size() << std::endl;
+		std::cout << test.size() << std::endl;
 	}
 	catch (const std::runtime_error &e)
 	{
